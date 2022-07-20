@@ -20,8 +20,10 @@ export default function Statistics(props) {
 
 Statistics.propTypes = {
   title: PropTypes.string,
-  stats: PropTypes.shape({
-    label: PropTypes.string,
-    percentage: PropTypes.number,
-  }),
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      percentage: PropTypes.number,
+    })
+  ),
 };
