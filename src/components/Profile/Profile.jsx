@@ -1,42 +1,53 @@
 import PropTypes from 'prop-types';
+import { Section } from '../common/Section.styled';
+import {
+  ProfileDescription,
+  Avatar,
+  Name,
+  UserInfo,
+  UserList,
+  UserLabel,
+  UserItem,
+  UserValue,
+} from './Profile.styled';
 
 export default function Profile(props) {
   const { username, tag, location, avatar, stats } = props;
   return (
-    <div class="profile">
-      <div class="description">
-        <img src={avatar} alt="User avatar" class="avatar" />
-        <p class="name">{username}</p>
-        <p class="tag">{tag}</p>
-        <p class="location">{location}</p>
-      </div>
+    <Section>
+      <ProfileDescription>
+        <Avatar src={avatar} alt="User avatar" />
+        <Name>{username}</Name>
+        <UserInfo>{tag}</UserInfo>
+        <UserInfo>{location}</UserInfo>
+      </ProfileDescription>
 
-      <ul class="stats">
-        <li>
-          <span class="label">Followers</span>
-          <span class="quantity">{stats.followers}</span>
-        </li>
-        <li>
-          <span class="label">Views</span>
-          <span class="quantity">{stats.views}</span>
-        </li>
-        <li>
-          <span class="label">Likes</span>
-          <span class="quantity">{stats.likes}</span>
-        </li>
-      </ul>
-    </div>
+      <UserList>
+        <UserItem>
+          <UserLabel>Followers</UserLabel>
+          <UserValue>{stats.followers}</UserValue>
+        </UserItem>
+        <UserItem>
+          <UserLabel>Views</UserLabel>
+          <UserValue>{stats.views}</UserValue>
+        </UserItem>
+        <UserItem>
+          <UserLabel>Likes</UserLabel>
+          <UserValue>{stats.likes}</UserValue>
+        </UserItem>
+      </UserList>
+    </Section>
   );
 }
 
 Profile.propTypes = {
-  username: PropTypes.string,
-  tag: PropTypes.string,
-  location: PropTypes.string,
-  avatar: PropTypes.string,
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
   stats: PropTypes.shape({
-    followers: PropTypes.number,
-    views: PropTypes.number,
-    likes: PropTypes.number,
-  }),
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+  }).isRequired,
 };
