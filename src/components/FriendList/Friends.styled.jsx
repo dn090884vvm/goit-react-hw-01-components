@@ -19,8 +19,9 @@ export const Offline = styled(FriendStatus)`
 export const FriendItem = styled.li`
   display: flex;
   align-items: center;
-   &:not(:last-child) {
+  &:not(:last-child) {
     margin-bottom: 15px;
+  }
 `;
 
 export const FriendAvatar = styled.img`
